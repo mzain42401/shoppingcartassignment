@@ -1,6 +1,9 @@
 import React, { useContext } from 'react'
-// import { CartContext } from '../store/cartContext'
-const Card = ({tittle,discription,price}) => {
+import { CartContext } from '../store/cartContext'
+
+const Card = ({tittle,discription,price,elem,func ,btnvalue,index}) => {
+  // const {cartData,setCartdata} =useContext(CartContext)
+  
   // useContext(CartContext)
   return (
     <>
@@ -26,7 +29,7 @@ const Card = ({tittle,discription,price}) => {
 
             <div className='flex justify-between mt-4 items-center '>
               <p  >{price}</p>
-              <div className='bg-indigo-600 py-1 px-4 rounded-full text-white cursor-pointer '>Add to cart</div>
+              <div className='bg-indigo-600 py-1 px-4 rounded-full text-white cursor-pointer ' onClick={()=>func(elem,index)}>{btnvalue}</div>
             </div>
           </div> 
     </>

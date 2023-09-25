@@ -7,7 +7,7 @@ import { ProductContext } from "../store/product/productContext"
 
  function Form() {
   const {productList,setProductList}=useContext(ProductContext)
-const [title,settitle]=useState('')
+const [tittle,settitle]=useState('')
 const [price,setPrice]=useState('')
 const [discription,setDiscription]=useState('')
 
@@ -15,7 +15,7 @@ const [discription,setDiscription]=useState('')
 const addToCart=(e)=>{
 e.preventDefault()
    let id=Math.random()*2562536752635;
-   setProductList([...productList,{title,price,discription,id}])
+   setProductList([...productList,{tittle,price,discription,id}])
 }
 
 //   const navigate = useNavigate();
@@ -71,7 +71,7 @@ e.preventDefault()
                     id="title"
                     name="title"
                     type="text"
-                    value={title}
+                    value={tittle}
                     onChange={(e)=>settitle(e.target.value)}
                     autoComplete="email"
                     required
