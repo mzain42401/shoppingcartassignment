@@ -1,40 +1,48 @@
-import React, { useRef, useState } from "react"
-import { useNavigate  } from "react-router-dom";
-import database from "../firebase/firebase";
-import { push,ref } from "firebase/database";
-import Swal from 'sweetalert2'
+import React, { useContext, useState } from "react"
+// import { useNavigate  } from "react-router-dom";
+// import database from "../firebase/firebase";
+// import { push,ref } from "firebase/database";
+// import Swal from 'sweetalert2'\
+import { ProductContext } from "../store/product/productContext"
 
  function Form() {
-  const navigate = useNavigate();
-   let key=Math.random()*2562536752635;
-   let mykey=key.toFixed()
-let titleRef=useRef()
-let priceRef=useRef()
-let discrptionRef=useRef()
+  const {productList,setProductList}=useContext(ProductContext)
+const [title,settitle]=useState('')
+const [price,setPrice]=useState('')
+const [discription,setDiscription]=useState('')
 
 
+const addToCart=(e)=>{
+e.preventDefault()
+   let id=Math.random()*2562536752635;
+   setProductList([...productList,{title,price,discription,id}])
+}
 
-   const putData=(e)=>{
-    e.preventDefault()
-    let title=titleRef.current.value;
-let price=priceRef.current.value;
-let discription=discrptionRef.current.value;
+//   const navigate = useNavigate();
+//    let mykey=key.toFixed()
+//    const putData=(e)=>{
+//     e.preventDefault()
+//     let title=titleRef.current.value;
+// let price=priceRef.current.value;
+// let discription=discrptionRef.current.value;
 
-    push(ref(database,'products/' + mykey),{
-      title,
-      price,
-      discription,
-      mykey
-    } )
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Your Product added!  ',
-      showConfirmButton: false,
-      timer: 1500
-    })
-    navigate ('/')
-  }
+//     push(ref(database,'products/' ),{
+//       title,
+//       price,
+//       discription,
+//       mykey
+//     } )
+
+    
+//     Swal.fire({
+//       position: 'center',
+//       icon: 'success',
+//       title: 'Your Product added!  ',
+//       showConfirmButton: false,
+//       timer: 1500
+//     })
+//     navigate ('/')
+//   }
  
 
  
@@ -53,7 +61,7 @@ let discription=discrptionRef.current.value;
           </div>
   
           <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" onSubmit={putData}>
+            <form className="space-y-6"  onSubmit={addToCart} >
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Product Title
@@ -63,7 +71,8 @@ let discription=discrptionRef.current.value;
                     id="title"
                     name="title"
                     type="text"
-                    ref={titleRef}
+                    value={title}
+                    onChange={(e)=>settitle(e.target.value)}
                     autoComplete="email"
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
@@ -82,7 +91,8 @@ let discription=discrptionRef.current.value;
                     id="price "
                     name="price"
                     type="number"
-                    ref={priceRef}
+                    value={price}
+                    onChange={(e)=>setPrice(e.target.value)}
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2 "
                   />
@@ -98,7 +108,8 @@ let discription=discrptionRef.current.value;
                     id="discription"
                     name="discription"
                     rows="4" cols="50"
-                    ref={discrptionRef}
+                    value={discription}
+                    onChange={(e)=>setDiscription(e.target.value)}
                     required
                     className="block w-full rounded-md border-0 py-7.5 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 " 
                   />

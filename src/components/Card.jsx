@@ -1,6 +1,7 @@
-import React from 'react'
-
-const Card = () => {
+import React, { useContext } from 'react'
+// import { CartContext } from '../store/cartContext'
+const Card = ({tittle,discription,price}) => {
+  // useContext(CartContext)
   return (
     <>
       <div className=' bg-white w-72 m-3 shadow-2xl shadow-gray-400 py-3 px-4 rounded'>
@@ -9,12 +10,12 @@ const Card = () => {
             </div>
 
             <div>
-              <h2 className='text-2xl'>tittle</h2>
+              <h2 className='text-2xl'>{tittle}</h2>
             </div>
 
             <div>
               <p className='text-gray-400'>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae suscipit veritatis harum obcaecati vero a natus delectus soluta m!
+                {discription}
               </p>
             </div>
 
@@ -24,7 +25,7 @@ const Card = () => {
 
 
             <div className='flex justify-between mt-4 items-center '>
-              <p  >$19</p>
+              <p  >{price}</p>
               <div className='bg-indigo-600 py-1 px-4 rounded-full text-white cursor-pointer '>Add to cart</div>
             </div>
           </div> 
