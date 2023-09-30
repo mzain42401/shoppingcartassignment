@@ -1,30 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Navbar from '../components/Navbar'
 import Card from '../components/Card'
 import { CartContext } from '../store/cartContext'
+import { ProductContext } from '../store/product/productContext'
 
-// import ProductContext from '../store/product/productContext'
-import { ProductContext } from "../store/product/productContext"
-
-export const Home = () => {
-
-  const {productList}=useContext(ProductContext)
-  const {cartData,setCartdata}=useContext(CartContext)
+ const Home = () => {
+const {productList}=useContext(ProductContext)
+  const {cartData}=useContext(CartContext)
   const addToCartFunc=(elem)=>{
-    setCartdata([...cartData,elem])
+   
   }
  
 
   const removeFromCartFunc=(elem,index)=>{
-    cartData.slice(index,1)
-    setCartdata([...cartData])
-      }
+   
+
+   }
   return (
     <>
+    <h1>zain</h1>
 
-      <Navbar />
-      <div className='bg-slate-100  w-full  flex justify-center'>
-        <div className='mt-32 w-full p-1 flex justify-center flex-wrap  '>
+      <div className='bg-slate-100  w-full h-screen flex justify-center'>
+        <div className='mt-32 w-full  flex justify-center flex-wrap  '>
           
  {productList?
   productList.map((elem,index)=>{
@@ -44,3 +41,5 @@ return(
 }
 
 
+
+export default Home

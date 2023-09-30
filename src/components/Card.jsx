@@ -7,7 +7,7 @@ const Card = ({tittle,discription,price,elem,func ,btnvalue,index}) => {
   // useContext(CartContext)
   return (
     <>
-      <div className=' bg-white w-72 m-3 shadow-2xl shadow-gray-400 py-3 px-4 rounded'>
+      <div className=' bg-white h-96 w-72 m-3 shadow-2xl shadow-gray-400 py-3 px-4 rounded flex flex-col  justify-center'>
             <div>
               <img className='w-full h-44 rounded' src="https://media.wired.com/photos/5f52a44bb555bc55dbcdf5a8/master/w_2560%2Cc_limit/Gear-Wireless-Bluetooth-1226031847.jpg" alt="" />
             </div>

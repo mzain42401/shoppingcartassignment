@@ -4,16 +4,15 @@ import { CartContext } from '../store/cartContext'
 import Card from '../components/Card'
 
 const Cart = () => {
-  const {cartData,setCartdata}=useContext(CartContext)
-  const removeFromCartFunc=(elem,index)=>{
-cartData.slice(index,1)
-setCartdata([...cartData])
-  }
+ const {cartData}=useContext(CartContext)
+ const removeFromCartFunc=()=>{
+  alert("zain")
+ }
   
   return (
     <>
 
-    <Navbar/>
+    <Navbar cartData={cartData}/>
     <div className=' flex justify-center items-center flex-wrap pt-24'>
 
     {
