@@ -1,25 +1,33 @@
 // import { useRouter } from 'next/router'
 import React, { useRef, useState } from 'react'
-
+import myAuth from '../../firebase/firebase'
+import {createUserWithEmailAndPassword} from 'firebase/auth'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
+    const redirect=useNavigate()
  const [error,seterror] =  useState('')
  const [passworderror,setpassworderror] =  useState('')
 
-    const firstNameRef=useRef()
-    const lastNameRef=useRef()
+    // const firstNameRef=useRef()
+    // const lastNameRef=useRef()
     const emailRef=useRef()
     const passwordRef=useRef()
-    const repeatpasswordRef=useRef()
+    // const repeatpasswordRef=useRef()
 
 const   sumbitform =async(e)=>{
   e.preventDefault()
-  const firstName =firstNameRef.current.value
-  const lastName=lastNameRef.current.value
+//   const firstName =firstNameRef.current.value
+//   const lastName=lastNameRef.current.value
   const email=emailRef.current.value
   const password=passwordRef.current.value
-  const reaptPassword=repeatpasswordRef.current.value
-  
+//   const reaptPassword=repeatpasswordRef.current.value
+createUserWithEmailAndPassword(myAuth,email,password).then((data)=>{
+    console.log(data);
+}).catch((error)=>{
+    console.log(error);
+})
+redirect('/')
 }
 
     return (
@@ -32,11 +40,11 @@ const   sumbitform =async(e)=>{
                 <div className="p-6 shadow-lg border border-gray-200  border-solid shadow-gray-400 rounded-xl  mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     
                     <form className="space-y-6" onSubmit={sumbitform} >
-                        <div>
+                        {/* <div>
 
                             <div className="mt-2">
                                 <input
-                                    id="text"
+                                    id="text1"
                                     placeholder='First Name'
                                     name="text"
                                     type="text"
@@ -50,7 +58,7 @@ const   sumbitform =async(e)=>{
 
                             <div className="mt-2">
                                 <input
-                                    id="text"
+                                    id="text2"
                                     name="text"
                                     placeholder='Last Name'
                                     type="text"
@@ -59,7 +67,7 @@ const   sumbitform =async(e)=>{
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset px-2 focus:ring-indigo-600 focus-visible:outline-indigo-600  sm:text-sm sm:leading-6"
                                 />
                             </div>
-                        </div>
+                        </div> */}
                         <div>
 
                             <div className="mt-2">
@@ -90,7 +98,7 @@ const   sumbitform =async(e)=>{
                                 />
                             </div>
                         </div>
-                        <div>
+                        {/* <div>
 
                             <div className="mt-2">
                                 <input
@@ -105,7 +113,7 @@ const   sumbitform =async(e)=>{
                             </div>
                             <div>{passworderror&& <p className='text-red-500'>{passworderror}</p>}</div>
 
-                        </div>
+                        </div> */}
                         {/* <div className="flex items-center justify-between">
                             <div className="text-sm">
 

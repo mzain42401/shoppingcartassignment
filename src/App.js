@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CartContextProvider from './store/CartContextProvider'
 import ProductContextProvider from './store/product/ProductContextProvider';
 import Navbar from './components/Navbar'
-import Login from './auth/Login'
-import Signup from './auth/Signup'
+import Signup from './pages/auth/Signup'
+import Login from './pages/auth/Login'
 
 
 const App = () => {

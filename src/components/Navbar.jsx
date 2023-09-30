@@ -33,6 +33,7 @@ const Navbar = () => {
           {initial ? <MenuOutlined /> : <CloseOutlined />}
         </div>
       </nav>
+      
       <Outlet/>
     </>
   )
