@@ -1,12 +1,11 @@
 import React from 'react'
 
-const Signup = () => {
+const Footer = () => {
   return (
     <>
-     Signup
- 
+      footer
     </>
   )
 }
 
-export default Signup
+export default Footer

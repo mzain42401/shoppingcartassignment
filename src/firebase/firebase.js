@@ -12,6 +12,7 @@ const firebaseConfig = {
   databaseURL:"https://shopping-web-app-d8509-default-rtdb.firebaseio.com",
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 const myAuth = getAuth(app);
+
 export default myAuth;
